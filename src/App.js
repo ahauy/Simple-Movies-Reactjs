@@ -1,5 +1,6 @@
 import "./App.css";
-import { Fragment } from "react";
+import { Fragment } from "react"
+import MoviesList from "./components/movies/MoviesList";
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
         <span className="text-primary">Home</span>
         <span>Movies</span>
       </header>
-      <section className="banner page-container h-[500px]">
+      <section className="banner page-container h-[750px] mb-[60px]">
         <div className="w-full h-full rounded-lg relative">
           <div className=" overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
           <img
@@ -17,15 +18,33 @@ function App() {
             className="w-full h-full rounded-lg object-cover"
           />
           <div className="absolute w-full left-5 bottom-5">
-            <h2 className="font-bold text-[34px] text-white mb-5">Avengers: Endgame</h2>
+            <h2 className="font-bold text-[34px] text-white mb-5">
+              Avengers: Endgame
+            </h2>
             <div className="flex justify-start items-center gap-x-5 mb-5">
-              <span className="px-4 py-2 border boder-white rounded-lg text-white">Action</span>
-              <span className="px-4 py-2 border boder-white rounded-lg text-white">Action</span>
-              <span className="px-4 py-2 border boder-white rounded-lg text-white">Action</span>
+              <span className="px-4 py-2 border boder-white rounded-lg text-white">
+                Action
+              </span>
+              <span className="px-4 py-2 border boder-white rounded-lg text-white">
+                Action
+              </span>
+              <span className="px-4 py-2 border boder-white rounded-lg text-white">
+                Action
+              </span>
             </div>
-            <button className="px-5 py-3 text-white bg-primary rounded-lg font-semibold mb-5">Watch Now</button>
+            <button className="px-5 py-3 text-white bg-primary rounded-lg font-semibold mb-5">
+              Watch Now
+            </button>
           </div>
         </div>
+      </section>
+      <section className="movies-layout page-container text-white mb-[60px]">
+        <h2 className="capitalize text-[50px] font-bold mb-10">Now playing</h2>
+        <MoviesList></MoviesList>
+      </section>
+      <section className="movies-layout page-container text-white">
+        <h2 className="capitalize text-[50px] font-bold mb-10">Top rated movies</h2>
+        <MoviesList title="top_rated"></MoviesList>
       </section>
     </Fragment>
   );
