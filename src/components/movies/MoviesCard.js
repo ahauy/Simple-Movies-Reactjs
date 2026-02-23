@@ -1,10 +1,12 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const MoviesCard = ({ item }) => {
+  const navigate = useNavigate()
   return (
-    <div className="movie-card flex flex-col p-5 bg-slate-800 rounded-lg select-none h-full">
+    <div className="movie-card flex flex-col p-5 bg-slate-800 rounded-lg select-none h-full text-white">
       <img
         src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
         alt=""
@@ -28,7 +30,7 @@ const MoviesCard = ({ item }) => {
             />
           </span>
         </div>
-        <button className="w-full px-6 py-4 bg-primary rounded-xl mt-auto">
+        <button onClick={() => {navigate(`/movies/${item.id}`)}} className="w-full px-6 py-4 bg-primary rounded-xl mt-auto">
           Watch now
         </button>
       </div>

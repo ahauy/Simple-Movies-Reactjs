@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-slate-900 font-body
+    @apply bg-slate-900 font-body text-white px-20
   }
 }
 
@@ -19,5 +19,14 @@
     /* @apply mx-auto */
     height: auto;
     /* height: 100px; */
+  }
+
+  .banner .swiper { 
+    height: 100%;
+  }
+
+  .casts-list .swiper-slide {
+    width: 400px;
+    height: auto;
   }
 }

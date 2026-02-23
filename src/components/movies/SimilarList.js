@@ -4,21 +4,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import useSWR from "swr";
 import { fetcher } from "../../config";
 
-const MoviesList = ({ title = "now_playing" }) => {
+const SimilarList = ({movieId}) => {
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-  const URL = `https://api.themoviedb.org/3/movie/${title}?api_key=${API_KEY}`;
+  const URL = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}`;
   const { data } = useSWR(URL, fetcher);
-  const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    if (data && data.results) setMovies(data.results);
-  }, [data]);
+  const movieSimilars = data?.results || []
+
+  console.log(data)
 
   return (
     <div className="movies-list">
       <Swiper grabCursor={"true"} spaceBetween={40} slidesPerView={"auto"}>
-        {movies.length > 0 &&
-          movies.map((item) => (
+        {movieSimilars.length > 0 &&
+          movieSimilars.map((item) => (
             <SwiperSlide key={item.id}>
               <MoviesCard item={item}></MoviesCard>
             </SwiperSlide>
@@ -28,4 +27,4 @@ const MoviesList = ({ title = "now_playing" }) => {
   );
 };
 
-export default MoviesList;
+export default SimilarList;

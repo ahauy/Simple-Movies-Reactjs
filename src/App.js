@@ -1,51 +1,22 @@
 import "./App.css";
-import { Fragment } from "react"
-import MoviesList from "./components/movies/MoviesList";
+import "swiper/css";
+import { Route, Routes } from "react-router-dom";
+import { Fragment } from "react";
+import Main from "./components/layouts/Main";
+import HomePage from "./pages/HomePage";
+import MoviesPage from "./pages/MoviesPage";
+import MovieDetailPage from "./pages/MovieDetailPage";
 
 function App() {
   return (
     <Fragment>
-      <header className="header flex items-center justify-center gap-x-5 text-white py-10 text-2xl font-semibold">
-        <span className="text-primary">Home</span>
-        <span>Movies</span>
-      </header>
-      <section className="banner page-container h-[750px] mb-[60px]">
-        <div className="w-full h-full rounded-lg relative">
-          <div className=" overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-          <img
-            src="https://www.thebanner.org/sites/default/files/styles/article_detail_header/public/MM-037%20Avengers_%20Endgame.jpg?itok=xFl6RG_3"
-            alt=""
-            className="w-full h-full rounded-lg object-cover"
-          />
-          <div className="absolute w-full left-5 bottom-5">
-            <h2 className="font-bold text-[34px] text-white mb-5">
-              Avengers: Endgame
-            </h2>
-            <div className="flex justify-start items-center gap-x-5 mb-5">
-              <span className="px-4 py-2 border boder-white rounded-lg text-white">
-                Action
-              </span>
-              <span className="px-4 py-2 border boder-white rounded-lg text-white">
-                Action
-              </span>
-              <span className="px-4 py-2 border boder-white rounded-lg text-white">
-                Action
-              </span>
-            </div>
-            <button className="px-5 py-3 text-white bg-primary rounded-lg font-semibold mb-5">
-              Watch Now
-            </button>
-          </div>
-        </div>
-      </section>
-      <section className="movies-layout page-container text-white mb-[60px]">
-        <h2 className="capitalize text-[50px] font-bold mb-10">Now playing</h2>
-        <MoviesList></MoviesList>
-      </section>
-      <section className="movies-layout page-container text-white">
-        <h2 className="capitalize text-[50px] font-bold mb-10">Top rated movies</h2>
-        <MoviesList title="top_rated"></MoviesList>
-      </section>
+      <Routes>
+        <Route element={<Main></Main>}>
+          <Route path="/" element={<HomePage></HomePage>}></Route>
+          <Route path="/movies" element={<MoviesPage></MoviesPage>}></Route>
+          <Route path="/movies/:movieId" element={<MovieDetailPage></MovieDetailPage>}></Route>
+        </Route>
+      </Routes>
     </Fragment>
   );
 }
